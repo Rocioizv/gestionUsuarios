@@ -17,4 +17,8 @@ El superadmin y el admin tienen la misma vista.
 Los administradores pueden crear usuarios y asignarles un rol
 <img src="/img-readme/vista-crear.png" alt="vista crear">
 
+## Confirmaciones
+Al eliminar o verificar un usuario se envía un mensaje de confirmación
+<img src="/img-readme/verific.png" alt="verificación">
+<img src="/img-readme/eliminar.png" alt="eliminar">
 
