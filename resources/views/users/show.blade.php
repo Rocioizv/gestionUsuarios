@@ -13,7 +13,7 @@
     <p class="error">{{ session('error') }}</p>
     @endif
 
-    <table>
+    <table class="table table-striped table-bordered">
         <thead>
             <tr>
                 <th>Nombre</th>

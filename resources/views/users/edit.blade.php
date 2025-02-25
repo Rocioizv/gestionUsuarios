@@ -3,38 +3,42 @@
 @section('content')
 <div class="container">
     <h2>Editar Usuario</h2>
+    <!-- <a href="{{ route('users.index') }}" class="btn btn-secondary mt-3">Volver atrás</a> -->
 
     @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
     @endif
 
-    <form method="POST" action="{{ route('users.update', $user) }}">
+    <form action="{{ route('users.update', $user) }}" method="POST">
         @csrf
         @method('PUT')
 
-        <label>Nombre:</label>
-        <input type="text" name="name" value="{{ $user->name }}" required>
+        <div class="form-group">
+            <label for="name">Nombre</label>
+            <input type="text" name="name" id="name" class="form-control" value="{{ old('name', $user->name) }}" required>
+        </div>
 
-        <label>Email:</label>
-        <input type="email" name="email" value="{{ $user->email }}" required>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" class="form-control" value="{{ old('email', $user->email) }}" required>
+        </div>
 
-        <label>Rol:</label>
-        <select name="role" {{ $user->id == 1 ? 'disabled' : '' }}>
-            <option value="admin" {{ $user->role == 'admin' ? 'selected' : '' }}>Admin</option>
-            <option value="user" {{ $user->role == 'user' ? 'selected' : '' }}>User</option>
-        </select>
+        <div class="form-group">
+            <label for="role">Rol</label>
+            <select name="role" id="role" class="form-control" required>
+                <option value="admin" {{ old('role', $user->role) == 'admin' ? 'selected' : '' }}>Admin</option>
+                <option value="user" {{ old('role', $user->role) == 'user' ? 'selected' : '' }}>User</option>
+            </select>
+        </div>
 
-        @if ($user->id == 1)
-            <input type="hidden" name="role" value="{{ $user->role }}">
-        @endif
-
-        <button type="submit">Guardar cambios</button>
+        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+        <a href="{{ route('users.index') }}" class="btn btn-secondary mt-3">Volver atrás</a>
     </form>
 </div>
 @endsection

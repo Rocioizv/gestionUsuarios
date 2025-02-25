@@ -3,27 +3,39 @@
 @section('content')
 <div class="container">
     <h2>Crear Usuario</h2>
+    <a href="{{ route('users.index') }}" class="btn btn-secondary mb-3">Volver atrás</a>
     <form method="POST" action="{{ route('users.store') }}">
         @csrf
-        <label>Nombre:</label>
-        <input type="text" name="name" required>
 
-        <label>Email:</label>
-        <input type="email" name="email" required>
+        <div class="form-group">
+            <label for="name">Nombre:</label>
+            <input type="text" name="name" id="name" class="form-control" required>
+        </div>
 
-        <label>Contraseña:</label>
-        <input type="password" name="password" required>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email" class="form-control" required>
+        </div>
 
-        <label>Confirmar Contraseña:</label>
-        <input type="password" name="password_confirmation" required>
+        <div class="form-group">
+            <label for="password">Contraseña:</label>
+            <input type="password" name="password" id="password" class="form-control" required>
+        </div>
 
-        <label>Rol:</label>
-        <select name="role" required>
-            <option value="admin">Admin</option>
-            <option value="user">User</option>
-        </select>
+        <div class="form-group">
+            <label for="password_confirmation">Confirmar Contraseña:</label>
+            <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" required>
+        </div>
 
-        <button type="submit">Guardar</button>
+        <div class="form-group">
+            <label for="role">Rol:</label>
+            <select name="role" id="role" class="form-control" required>
+                <option value="admin">Admin</option>
+                <option value="user">User</option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Guardar</button>
     </form>
 </div>
 @endsection

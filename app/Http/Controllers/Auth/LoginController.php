@@ -47,4 +47,9 @@ class LoginController extends Controller
 
         return redirect('/'); // Redirige a la página de inicio
     }
+
+    protected function redirectTo()
+    {
+        return '/users';
+    }
 }
